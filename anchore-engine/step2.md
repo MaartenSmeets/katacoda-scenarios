@@ -2,7 +2,8 @@
 
 After a few moments (depending on system speed), your Anchore Engine services should be up and running, ready to use. You can verify the containers are running with docker-compose:
 
-    $ docker-compose ps
+`docker-compose ps`{{execute}}
+    
                     Name                               Command                        State           Ports
     -------------------------------------------------------------------------------------------------------
     anchorequickstart_anchore-db_1                   docker-entrypoint.sh postgres    Up      5432/tcp
@@ -14,7 +15,8 @@ After a few moments (depending on system speed), your Anchore Engine services sh
     
 You can run a command to get the status of the Anchore Engine services:
 
-    $ docker-compose exec api anchore-cli system status
+`docker-compose exec api anchore-cli system status`{{execute}}
+
     Service policy_engine (anchore-quickstart, http://policy-engine:8228): up
     Service simplequeue (anchore-quickstart, http://simpleq:8228): up
     Service catalog (anchore-quickstart, http://catalog:8228): up
@@ -26,7 +28,8 @@ You can run a command to get the status of the Anchore Engine services:
 
 **Note:** The first time you run Anchore Engine, it will take some time (10+ minutes, depending on network speed) for the vulnerability data to get synced into the engine. For the best experience, wait until the core vulnerability data feeds have completed before proceeding. You can check the status of your feed sync using the CLI:
 
-    $ docker-compose exec api anchore-cli system feeds list
+`docker-compose exec api anchore-cli system feeds list`{{execute}}
+
     Feed                   Group                  LastSync                          RecordCount        
     vulnerabilities        alpine:3.10            2020-04-27T19:49:45.186409        1725               
     vulnerabilities        alpine:3.11            2020-04-27T19:49:59.993730        1904               
@@ -75,7 +78,8 @@ You can run a command to get the status of the Anchore Engine services:
 
 As soon as you see RecordCount values > 0 for all vulnerability groups, the system is fully populated and ready to present vulnerability results. Note that feed syncs are incremental, so the next time you start up Anchore Engine it will be ready immediately. The CLI tool includes a useful utility that will block until the feeds have completed a successful sync:
 
-    $ docker-compose exec api anchore-cli system wait
+`docker-compose exec api anchore-cli system wait`{{execute}}
+
     Starting checks to wait for anchore-engine to be available timeout=-1.0 interval=5.0
     API availability: Checking anchore-engine URL (http://localhost:8228)...
     API availability: Success.
