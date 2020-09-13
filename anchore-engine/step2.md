@@ -95,4 +95,4 @@ Waiting until the system is fully populated will take too long for this short wo
 
 `docker-compose exec api anchore-cli system feeds list`{{execute interrupt}}
 
-Once debian:7 is completed, continue with the next step. This should take minutes.
+Once alpine:3.10 is completed, continue with the next step. This should take minutes.
