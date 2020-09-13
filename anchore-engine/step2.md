@@ -26,7 +26,7 @@ You can run a command to get the status of the Anchore Engine services:
     Engine DB Version: 0.0.13
     Engine Code Version: 0.8.1
 
-**Note:** The first time you run Anchore Engine, it will take some time (10+ minutes, depending on network speed) for the vulnerability data to get synced into the engine. For the best experience, wait until the core vulnerability data feeds have completed before proceeding. You can check the status of your feed sync using the CLI:
+**Note:** The first time you run Anchore Engine, it will take some time for the vulnerability data to get synced into the engine. For the best experience, wait until the core vulnerability data feeds have completed before proceeding. You can check the status of your feed sync using the CLI:
 
 `docker-compose exec api anchore-cli system feeds list`{{execute}}
 
