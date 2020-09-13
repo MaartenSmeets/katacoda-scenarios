@@ -1,12 +1,6 @@
 # Introduction
 In this section, you’ll learn how to get up and running with a stand-alone Anchore Engine installation for trial, demonstration and review with Docker Compose.
 
-# Configuration Files for this Quickstart:
-
-- Docker Compose File
-- (Optional) Prometheus Configuration for Monitoring. See Enabling Prometheus Monitoring
-- (Optional) Swagger UI Nginx Proxy to browse the API with a Swagger UI. See Enabling Swagger UI
-
 # Requirements
 
 The following instructions assume you are using a system running Docker v1.12 or higher, and a version of Docker Compose that supports at least v2 of the docker-compose configuration format. This is provided by the Katacoda environment.
