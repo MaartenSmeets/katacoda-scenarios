@@ -90,3 +90,9 @@ As soon as you see RecordCount values > 0 for all vulnerability groups, the syst
     ...
     ...
     Feed sync: Success.
+
+Waiting until the system is fully populated will take too long for this short workshop. Monitor the progress with the following command manually:
+
+`docker-compose exec api anchore-cli system feeds list`{{execute interrupt}}
+
+Once debian:7 is completed, continue with the next step. This should take minutes.
