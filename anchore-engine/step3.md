@@ -2,12 +2,12 @@
 
 Start using the anchore-engine service to analyze images - a short example follows which demonstrates a basic workflow of adding a container image for analysis, waiting for the analysis to complete, then running content reports, vulnerability scans and policy evaluations against the analyzed image.
 
-`docker-compose exec api anchore-cli image add docker.io/library/alpine:3.10`{{execute}}
+`docker-compose exec api anchore-cli image add docker.io/library/openjdk:14-jdk-alpine3.10`{{execute}}
 
     ...
     ...
 
-`docker-compose exec api anchore-cli image wait docker.io/library/alpine:3.10`{{execute}}
+`docker-compose exec api anchore-cli image wait docker.io/library/openjdk:14-jdk-alpine3.10`{{execute}}
 
     Status: analyzing
     Waiting 5.0 seconds for next retry.
@@ -16,30 +16,35 @@ Start using the anchore-engine service to analyze images - a short example follo
     ...
     ...
 
-`docker-compose exec api anchore-cli image content docker.io/library/alpine:3.10 os`{{execute}}
+`docker-compose exec api anchore-cli image content docker.io/library/openjdk:14-jdk-alpine3.10 os`{{execute}}
 
-    Package                       Version                      License
-    apt                           0.9.7.9+deb7u7               GPLv2+
-    base-files                    7.1wheezy11                  Unknown
-    debconf                       1.5.49                       BSD-2-clause
-    ...
-    ...
+    Package                       Version            Licenses
+    alpine-baselayout             3.1.2-r0           GPL-2.0-only
+    alpine-keys                   2.1-r2             MIT
+    apk-tools                     2.10.4-r2          GPL2
+    busybox                       1.30.1-r3          GPL-2.0
+    ca-certificates-cacert        20190108-r0        MPL-2.0 GPL-2.0-or-later
+    libc-utils                    0.7.1-r0           BSD
+    libcrypto1.1                  1.1.1d-r2          OpenSSL
+    libssl1.1                     1.1.1d-r2          OpenSSL
+    libtls-standalone             2.9.1-r0           ISC
+    musl                          1.1.22-r3          MIT
+    musl-utils                    1.1.22-r3          MIT BSD GPL2+
+    scanelf                       1.2.3-r0           GPL-2.0
+    ssl_client                    1.30.1-r3          GPL-2.0
+    zlib                          1.2.11-r1          zlib
 
-`docker-compose exec api anchore-cli image vuln docker.io/library/alpine:3.10 all`{{execute}}
+`docker-compose exec api anchore-cli image vuln docker.io/library/openjdk:14-jdk-alpine3.10 all`{{execute}}
 
-    Vulnerability ID        Package                                  Severity          Fix         Vulnerability URL
-    CVE-2005-2541           tar-1.26+dfsg-0.1+deb7u1                 Negligible        None        https://security-tracker.debian.org/tracker/CVE-2005-2541
-    CVE-2007-5686           login-1:4.1.5.1-1+deb7u1                 Negligible        None        https://security-tracker.debian.org/tracker/CVE-2007-5686
-    CVE-2007-5686           passwd-1:4.1.5.1-1+deb7u1                Negligible        None        https://security-tracker.debian.org/tracker/CVE-2007-5686
-    CVE-2007-6755           libssl1.0.0-1.0.1t-1+deb7u4              Negligible        None        https://security-tracker.debian.org/tracker/CVE-2007-6755
-    ...
-    ...
-    ...
+    Vulnerability ID        Package                       Severity        Fix              CVE Refs        Vulnerability URL                                                  Type        Feed Group         Package Path
+    CVE-2020-1967           libcrypto1.1-1.1.1d-r2        Medium          1.1.1g-r0                        http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-1967        APKG        alpine:3.10        pkgdb
+    CVE-2020-1967           libssl1.1-1.1.1d-r2           Medium          1.1.1g-r0                        http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-1967        APKG        alpine:3.10        pkgdb
 
-`docker-compose exec api anchore-cli evaluate check docker.io/library/alpine:3.10`{{execute}}
+`docker-compose exec api anchore-cli evaluate check docker.io/library/openjdk:14-jdk-alpine3.10`{{execute}}
 
-    Image Digest: sha256:92d507d81bd3b0459b121215f6f9d8249bb154c8b65e041942745dcc6309a7b5
-    Full Tag: docker.io/library/alpine:3.10
+    docker.io/library/openjdk:14-jdk-alpine3.10
+    Image Digest: sha256:7c29ddf86e7fc5ea5fe01e1ad3e3439422fc50dc2c568b00d6bd79bdb026bfdf
+    Full Tag: docker.io/library/openjdk:14-jdk-alpine3.10
     Status: pass
-    Last Eval: 2018-11-06T22:51:47Z
+    Last Eval: 2020-09-13T13:12:28Z
     Policy ID: 2c53a13c-1765-11e8-82ef-23527761d060
