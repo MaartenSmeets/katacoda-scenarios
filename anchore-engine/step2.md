@@ -16,6 +16,7 @@ After a few moments (depending on system speed), your Anchore Engine services sh
 You can run a command to get the status of the Anchore Engine services:
 
 `docker-compose exec api anchore-cli system status`{{execute}}
+
     Service policy_engine (anchore-quickstart, http://policy-engine:8228): up
     Service simplequeue (anchore-quickstart, http://simpleq:8228): up
     Service catalog (anchore-quickstart, http://catalog:8228): up
